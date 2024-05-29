@@ -1,0 +1,8 @@
+targets:
+  $default:
+    builders:
+      auto_route_generator:auto_router_generator:
+        options:
+          runs_before:
+            - build_resolvers:transitive_digests
+
