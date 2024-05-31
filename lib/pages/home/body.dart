@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:home/widgets/footer/main_footer.dart';
 
 class HomePageBody extends StatelessWidget {
   const HomePageBody({super.key});
@@ -69,7 +70,7 @@ class HomePageBody extends StatelessWidget {
                             // height: 80,
                             decoration: BoxDecoration(
                               color: Colors.white.withOpacity(
-                                  0.2), // Optional: Container color
+                                  0.4), // Optional: Container color
                               borderRadius: BorderRadius.circular(
                                   15), // Optional: Border radius
                             ),
@@ -271,6 +272,8 @@ class HomePageBody extends StatelessWidget {
             ),
           ),
         ),
+        const SizedBox(height: 30),
+        const MainFooter()
       ],
     );
   }
