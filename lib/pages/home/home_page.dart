@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+// import 'package:google_fonts/google_fonts.dart';
 import 'package:home/pages/home/body.dart';
 import 'package:home/pages/home/search.dart';
 import 'package:home/widgets/button/chip.dart';
@@ -34,16 +34,18 @@ class _HomePageState extends State<HomePage> {
                     borderRadius: const BorderRadius.vertical(
                       bottom: Radius.circular(25),
                     ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.blue.shade900.withOpacity(0.1),
-                        blurRadius: 10,
-                      ),
-                      BoxShadow(
-                        color: Colors.blue.shade900.withOpacity(0.1),
-                        blurRadius: 30,
-                      )
-                    ],
+                    boxShadow: !_isSearch
+                        ? [
+                            BoxShadow(
+                              color: Colors.blue.shade900.withOpacity(0.1),
+                              blurRadius: 10,
+                            ),
+                            BoxShadow(
+                              color: Colors.blue.shade900.withOpacity(0.1),
+                              blurRadius: 30,
+                            )
+                          ]
+                        : null,
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(30),
@@ -93,7 +95,9 @@ class _HomePageState extends State<HomePage> {
                               decoration: InputDecoration(
                                 hintText: "Search",
                                 suffixIcon: IconButton(
-                                  icon: const Icon(Icons.search),
+                                  icon: _isSearch
+                                      ? const Icon(Icons.cancel_outlined)
+                                      : const Icon(Icons.search),
                                   onPressed: () {
                                     setState(() {
                                       _isSearch = !_isSearch;
@@ -120,37 +124,39 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 AnimatedSwitcher(
-                    duration:
-                        const Duration(milliseconds: 500), // Animation duration
+                  duration:
+                      const Duration(milliseconds: 500), // Animation duration
 
-                    child: _isSearch
-                        ? Search(searchController: searchController)
-                        : const HomePageBody()),
-                const SizedBox(height: 60),
+                  child: _isSearch
+                      ? Search(searchController: searchController)
+                      : const HomePageBody(),
+                ),
               ],
             ),
           ),
-          const Divider(),
-          Container(
-            // decoration: BoxDecoration(color: Colors.blueGrey.shade50),
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    const Icon(Icons.copyright_outlined),
-                    const SizedBox(width: 10),
-                    Text("HOME", style: GoogleFonts.roboto(fontSize: 12)),
-                  ],
-                ),
-                Text("some other text",
-                    style: GoogleFonts.roboto(fontSize: 12)),
-              ],
-            ),
-          )
         ],
       ),
     );
   }
 }
+
+
+          // const Divider(),
+          // Container(
+          //   // decoration: BoxDecoration(color: Colors.blueGrey.shade50),
+          //   padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //     children: [
+          //       Row(
+          //         children: [
+          //           const Icon(Icons.copyright_outlined),
+          //           const SizedBox(width: 10),
+          //           Text("HOME", style: GoogleFonts.roboto(fontSize: 12)),
+          //         ],
+          //       ),
+          //       Text("some other text",
+          //           style: GoogleFonts.roboto(fontSize: 12)),
+          //     ],
+          //   ),
+          // )
