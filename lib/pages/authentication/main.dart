@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:home/routes/app_router.dart';
+// import 'package:home/routes/app_router.dart';
 // -- widgets
 import 'package:home/widgets/appBar/auth_app_bar.dart';
-import "package:home/widgets/button/custom_button.dart";
+// import "package:home/widgets/button/custom_button.dart";
 
 @RoutePage()
 class AuthenticationMainPage extends StatelessWidget implements AutoRouteWrapper {
