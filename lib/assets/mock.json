@@ -1,0 +1,37 @@
+[
+  {
+    "name": "some name",
+    "image": "lib/assets/jpg/h1.jpg",
+    "description": "some longer text that is the clear way to go for this card and it should be like this."
+  },
+  {
+    "name": "some name",
+    "image": "lib/assets/jpg/h1.jpg",
+    "description": "some longer text that is the clear way to go for this card and it should be like this."
+  },
+  {
+    "name": "some name",
+    "image": "lib/assets/jpg/h1.jpg",
+    "description": "some longer text that is the clear way to go for this card and it should be like this."
+  },
+  {
+    "name": "some name",
+    "image": "lib/assets/jpg/h1.jpg",
+    "description": "some longer text that is the clear way to go for this card and it should be like this."
+  },
+  {
+    "name": "some name",
+    "image": "lib/assets/jpg/h1.jpg",
+    "description": "some longer text that is the clear way to go for this card and it should be like this."
+  },
+  {
+    "name": "some name",
+    "image": "lib/assets/jpg/h1.jpg",
+    "description": "some longer text that is the clear way to go for this card and it should be like this."
+  },
+  {
+    "name": "some name",
+    "image": "lib/assets/jpg/h1.jpg",
+    "description": "some longer text that is the clear way to go for this card and it should be like this."
+  }
+]
