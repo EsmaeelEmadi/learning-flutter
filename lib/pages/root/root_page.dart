@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:home/widgets/appBar/main_app_bar.dart';
 import 'package:home/widgets/menu/main_menu.dart';
 
@@ -12,7 +13,7 @@ class RootWrapperPage extends StatelessWidget implements AutoRouteWrapper {
     return const SafeArea(
       child: Scaffold(
         appBar: MainAppBar(),
-        endDrawer: MainMenu(), 
+        endDrawer: MainMenu(),
         body: AutoRouter(),
       ),
     );
@@ -24,18 +25,5 @@ class RootWrapperPage extends StatelessWidget implements AutoRouteWrapper {
   }
 }
 
-// NavigationDrawer(
-//           children: <Widget>[
-//             Padding(
-//               padding: EdgeInsets.fromLTRB(28, 16, 16, 10),
-//               child: Text(
-//                 'Header',
-//               ),
-//             ),
-//             Padding(
-//               padding: EdgeInsets.fromLTRB(28, 16, 28, 10),
-//               child: Divider(),
-//             ),
-//           ],
-//         ),
-//
+
+        
