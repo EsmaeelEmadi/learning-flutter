@@ -52,15 +52,11 @@ class LoginLayoutState extends State<LoginLayout>
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
-      // height: _alpha.value,
-
-      // height: _showLogin ? _alpha.value : 42,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: Colors.white,
       ),
       width: double.infinity,
-      // padding: const EdgeInsets.symmetric(horizontal: 25),
       margin: const EdgeInsets.symmetric(horizontal: 25),
       child: Center(
         child: Column(
@@ -77,7 +73,6 @@ class LoginLayoutState extends State<LoginLayout>
               width: double.infinity,
               child: CustomButton(
                 text: "Login",
-                // bgColor: const Color.fromRGBO(75, 188, 212, 1),
                 onPressed: _toggleLogin,
               ),
             ),
@@ -87,15 +82,3 @@ class LoginLayoutState extends State<LoginLayout>
     );
   }
 }
-
-// class CustomBoxAnimation extends CustomPainter {
-//   final Animation alpha;
-//
-//   CustomBoxAnimation({required this.alpha}) : super(repaint: alpha);
-//
-//   @override
-//   void paint(Canvas canvas, Size size) {
-//     var paint = Paint();
-//     paint.color = Colors.red;
-//   }
-// }

@@ -1,69 +1,22 @@
-import 'package:home/store/theme/default.dart';
+import 'package:flutter/material.dart';
+import 'package:home/models/auth/state.dart';
 import 'package:home/models/theme/theme.dart';
-import 'package:home/models/is_authenticated/is_authenticated.dart';
 
+@immutable
 class AppState {
-  final Theme theme;
-  final IsAuthenticated isAuthenticated;
+  final ThemeState theme;
+  final AuthState auth;
 
-  AppState(this.theme, this.isAuthenticated);
+  const AppState(this.theme, this.auth);
 
-  factory AppState.initial() {
-    return AppState(Theme(InitialTheme.brightness, false), IsAuthenticated(false));
+  factory AppState.initial(bool isAuthenticated) {
+    return AppState(
+      ThemeState.initial(),
+      AuthState.initial(isAuthenticated),
+    );
   }
 
   AppState copyWith() {
-    return AppState(theme, isAuthenticated);
+    return AppState(theme, auth);
   }
 }
-
-// //   AppState copyWith({
-// //     DataState<User>? usersState,
-// //   }) {
-// //     return AppState(
-// //       usersState ?? userState,
-// //       isAuthenticated 
-// //     );
-// //   }
-
-
-
-
-// // import 'package:home/models/user/user.dart';
-// // import 'package:home/models/data_state.dart';
-// //
-// // class AppState {
-// //   final DataState<User> userState;
-// //
-// //   AppState(
-// //     this.userState,
-// //     this.isAuthenticated
-// //   );
-// //
-// //   factory AppState.initial() {
-// //     return AppState(
-// //       DataState<User>.initial(),
-// //       IsAuthenticated(false)
-// //     );
-// //   }
-// //
-// //   AppState copyWith({
-// //     DataState<User>? usersState,
-// //   }) {
-// //     return AppState(
-// //       usersState ?? userState,
-// //       isAuthenticated 
-// //     );
-// //   }
-// //
-// //   // @override
-// //   // int get hashCode => hashValues(usersState);
-// //   //
-// //   // @override
-// //   // bool operator ==(Object other) {
-// //   //   return identical(this, other) ||
-// //   //       (other is ApplicationState &&
-// //   //           usersState == other.usersState 
-// //   //           );
-// //   // }
-// // }

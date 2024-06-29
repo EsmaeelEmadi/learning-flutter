@@ -2,7 +2,16 @@ import 'package:flutter/material.dart';
 
 abstract class ThemeActions {}
 
-class SetShowMainMenu implements ThemeActions { 
+class SetIsSearch implements ThemeActions {
+  final bool isSearch;
+
+  SetIsSearch(this.isSearch);
+
+  @override
+  String toString() => "$SetIsSearch";
+}
+
+class SetShowMainMenu implements ThemeActions {
   final bool showMainMenu;
 
   SetShowMainMenu(this.showMainMenu);
@@ -11,7 +20,7 @@ class SetShowMainMenu implements ThemeActions {
   String toString() => "$SetShowMainMenu";
 }
 
-class SetTheme implements ThemeActions { 
+class SetTheme implements ThemeActions {
   final Brightness brightness;
 
   SetTheme(this.brightness);
@@ -19,4 +28,3 @@ class SetTheme implements ThemeActions {
   @override
   String toString() => "$SetTheme";
 }
-

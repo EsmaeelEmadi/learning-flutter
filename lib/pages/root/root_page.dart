@@ -1,20 +1,23 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:home/widgets/appBar/main_app_bar.dart';
 import 'package:home/widgets/menu/main_menu.dart';
 
 @RoutePage()
 class RootWrapperPage extends StatelessWidget implements AutoRouteWrapper {
-  const RootWrapperPage({super.key});
+  RootWrapperPage({super.key});
+
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
       child: Scaffold(
-        appBar: MainAppBar(),
-        endDrawer: MainMenu(),
-        body: AutoRouter(),
+        key: _scaffoldKey, // Assign the key to Scaffold
+        appBar: MainAppBar(scaffoldKey: _scaffoldKey),
+        endDrawer: const MainMenu(),
+        body: const AutoRouter(),
+        resizeToAvoidBottomInset: true, // Automatically adjust for keyboard
       ),
     );
   }
@@ -24,6 +27,3 @@ class RootWrapperPage extends StatelessWidget implements AutoRouteWrapper {
     throw UnimplementedError();
   }
 }
-
-
-        

@@ -1,7 +1,8 @@
+import 'package:home/models/user/user.dart';
 import 'package:redux/redux.dart';
 import 'package:home/api/user.dart';
+import 'package:home/store/user/action.dart';
 import 'package:home/store/application_state.dart';
-import 'package:home/store/user/actions.dart';
 
 class UsersMiddleware implements MiddlewareClass<AppState> {
   final UserApi api;
@@ -14,16 +15,15 @@ class UsersMiddleware implements MiddlewareClass<AppState> {
     dynamic action,
     NextDispatcher next,
   ) async {
-    // DO NOT FORGET THIS. If you do, this middleware
-    // will "break" the chain of NextDispatcher's
-    next(action);
+    if (action is LoginUser) {
+      store.dispatch(SetUserIsLoading(true));
 
-    if (action is CreateUserAction) {
       try {
-        final users = await api.createUser();
-        store.dispatch(LoadUserSucceededAction(users));
+        // final User user = await api.login(action.username, action.password);
+        // store.dispatch(SetUserData(user));
+        next(action);
       } on ApiException catch (e) {
-        store.dispatch(LoadUserFailedAction(e.message));
+        store.dispatch(SetUserError(e.message));
       }
     }
   }

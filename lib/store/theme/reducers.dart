@@ -14,24 +14,41 @@ import 'package:home/models/theme/theme.dart';
 import 'package:home/store/theme/actions.dart';
 import 'package:redux/redux.dart';
 
-final themeReducer =
-    combineReducers<Theme>([
-  TypedReducer<Theme, SetTheme>(onSetTheme).call,
-  TypedReducer<Theme, SetShowMainMenu>(onSetShowMainMenu).call,
+final themeReducer = combineReducers<ThemeState>([
+  TypedReducer<ThemeState, SetTheme>(onSetTheme).call,
+  TypedReducer<ThemeState, SetShowMainMenu>(onSetShowMainMenu).call,
+  TypedReducer<ThemeState, SetIsSearch>(onSetIsSearch).call,
 ]);
 
-Theme onSetTheme(
-  Theme state,
-  SetTheme action,
+ThemeState onSetIsSearch(
+  ThemeState state,
+  SetIsSearch action,
 ) {
-  Theme newTheme = Theme(action.brightness, state.showMainMenu);
+  ThemeState newTheme = ThemeState(
+      brightness: state.brightness,
+      showMainMenu: state.showMainMenu,
+      isSearch: action.isSearch);
   return newTheme;
 }
 
-Theme onSetShowMainMenu(
-  Theme state,
+ThemeState onSetTheme(
+  ThemeState state,
+  SetTheme action,
+) {
+  ThemeState newTheme = ThemeState(
+      brightness: action.brightness,
+      showMainMenu: state.showMainMenu,
+      isSearch: state.isSearch);
+  return newTheme;
+}
+
+ThemeState onSetShowMainMenu(
+  ThemeState state,
   SetShowMainMenu action,
 ) {
-  Theme newTheme = Theme(state.brightness, action.showMainMenu);
+  ThemeState newTheme = ThemeState(
+      brightness: state.brightness,
+      showMainMenu: action.showMainMenu,
+      isSearch: state.isSearch);
   return newTheme;
 }

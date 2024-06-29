@@ -1,16 +1,46 @@
+import 'package:home/store/user/action.dart';
 import 'package:redux/redux.dart';
-import 'package:home/models/user/user.dart';
-import 'package:home/store/user/actions.dart';
-import 'package:home/models/data_state.dart';
+import 'package:home/models/user/state.dart';
 
-final userReducer = combineReducers<DataState<User>>([
-  TypedReducer<DataState<User>, CreateUserAction>(onLogin).call
+final userReducer = combineReducers<UserState>([
+  TypedReducer<UserState, SetUserIsAuthenticated>(onSetUserIsAuthenticated)
+      .call,
+  TypedReducer<UserState, SetUserIsLoading>(onSetUserIsLoading).call,
+  TypedReducer<UserState, SetUserError>(onSetUserError).call,
+  TypedReducer<UserState, SetUserData>(onSetUserData).call,
 ]);
 
-DataState<User> onLogin(
-  DataState<User> state,
-  CreateUserAction action
+UserState onSetUserIsAuthenticated(
+  UserState state,
+  SetUserIsAuthenticated action,
 ) {
-  return state.copyWith(isLoading: true);
+  print("!!!!!!!!!!! ${action.isAuthenticated}");
+  // return state.copyWith(isAuthenticated: action.isAuthenticated);
+  return UserState(
+    isAuthenticated: false,
+    isLoading: state.isLoading,
+    error: state.error,
+    data: state.data,
+  );
 }
 
+UserState onSetUserIsLoading(
+  UserState state,
+  SetUserIsLoading action,
+) {
+  return state.copyWith(isLoading: action.isLoading);
+}
+
+UserState onSetUserError(
+  UserState state,
+  SetUserError action,
+) {
+  return state.copyWith(error: action.error);
+}
+
+UserState onSetUserData(
+  UserState state,
+  SetUserData action,
+) {
+  return state.copyWith(data: action.data);
+}

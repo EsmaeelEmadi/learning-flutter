@@ -49,6 +49,10 @@ dependencies:
   flutter_map: ^6.1.0
   http: ^1.2.1
   url_launcher: ^6.2.6
+  flutter_dotenv: ^5.1.0
+  shared_preferences: ^2.2.3
+  image_picker: ^1.1.2
+  flutter_keyboard_visibility: ^6.0.0
 
 dev_dependencies:
   flutter_test:
@@ -77,7 +81,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     # mock json
-    - lib/assets/mock.json
+    # - lib/assets/mock.json
     # svg
     - lib/assets/svg/logo.svg
     - lib/assets/svg/google.svg
@@ -87,6 +91,8 @@ flutter:
     - lib/assets/jpg/avatar.jpg
     # png
     - lib/assets/png/login.png
+    - lib/assets/png/home.png
+    - lib/assets/png/search.png
     # home
     - lib/assets/jpg/home_1.png
     - lib/assets/jpg/home_2.png
@@ -110,7 +116,8 @@ flutter:
     - lib/assets/jpg/h5.jpg
     - lib/assets/jpg/h6.jpg
     - lib/assets/jpg/h7.jpg
-
+    # env
+    - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

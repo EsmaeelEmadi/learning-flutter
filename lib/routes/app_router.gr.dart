@@ -27,16 +27,21 @@ abstract class _$AppRouter extends RootStackRouter {
         child: WrappedRoute(child: const AuthenticationMainPage()),
       );
     },
-    AuthenticationRoute.name: (routeData) {
+    LoginRoute.name: (routeData) {
+      final args = routeData.argsAs<LoginRouteArgs>(
+          orElse: () => const LoginRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const AuthenticationPage(),
+        child: LoginPage(
+          onResult: args.onResult,
+          key: args.key,
+        ),
       );
     },
-    HomeRoute.name: (routeData) {
+    MainRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const HomePage(),
+        child: const MainPage(),
       );
     },
     ProfileRoute.name: (routeData) {
@@ -52,9 +57,17 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     RootWrapperRoute.name: (routeData) {
+      final args = routeData.argsAs<RootWrapperRouteArgs>(
+          orElse: () => const RootWrapperRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: WrappedRoute(child: const RootWrapperPage()),
+        child: WrappedRoute(child: RootWrapperPage(key: args.key)),
+      );
+    },
+    SearchRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const SearchPage(),
       );
     },
   };
@@ -89,29 +102,52 @@ class AuthenticationMainRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [AuthenticationPage]
-class AuthenticationRoute extends PageRouteInfo<void> {
-  const AuthenticationRoute({List<PageRouteInfo>? children})
-      : super(
-          AuthenticationRoute.name,
+/// [LoginPage]
+class LoginRoute extends PageRouteInfo<LoginRouteArgs> {
+  LoginRoute({
+    void Function(dynamic)? onResult,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          LoginRoute.name,
+          args: LoginRouteArgs(
+            onResult: onResult,
+            key: key,
+          ),
           initialChildren: children,
         );
 
-  static const String name = 'AuthenticationRoute';
+  static const String name = 'LoginRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<LoginRouteArgs> page = PageInfo<LoginRouteArgs>(name);
+}
+
+class LoginRouteArgs {
+  const LoginRouteArgs({
+    this.onResult,
+    this.key,
+  });
+
+  final void Function(dynamic)? onResult;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'LoginRouteArgs{onResult: $onResult, key: $key}';
+  }
 }
 
 /// generated route for
-/// [HomePage]
-class HomeRoute extends PageRouteInfo<void> {
-  const HomeRoute({List<PageRouteInfo>? children})
+/// [MainPage]
+class MainRoute extends PageRouteInfo<void> {
+  const MainRoute({List<PageRouteInfo>? children})
       : super(
-          HomeRoute.name,
+          MainRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'HomeRoute';
+  static const String name = 'MainRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -146,14 +182,43 @@ class RegisterRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [RootWrapperPage]
-class RootWrapperRoute extends PageRouteInfo<void> {
-  const RootWrapperRoute({List<PageRouteInfo>? children})
-      : super(
+class RootWrapperRoute extends PageRouteInfo<RootWrapperRouteArgs> {
+  RootWrapperRoute({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           RootWrapperRoute.name,
+          args: RootWrapperRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'RootWrapperRoute';
+
+  static const PageInfo<RootWrapperRouteArgs> page =
+      PageInfo<RootWrapperRouteArgs>(name);
+}
+
+class RootWrapperRouteArgs {
+  const RootWrapperRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'RootWrapperRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
+/// [SearchPage]
+class SearchRoute extends PageRouteInfo<void> {
+  const SearchRoute({List<PageRouteInfo>? children})
+      : super(
+          SearchRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SearchRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

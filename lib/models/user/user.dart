@@ -1,41 +1,38 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:home/models/user/gender.dart';
 
-part 'user.g.dart';
-
-// @JsonSerializable()
-// class Gender {
-//   static const String male = 'MALE';
-//   static const String female = 'FEMALE';
-//
-//   factory Gender.fromJson(json) => _$GenderFromJson(json);
-//
-//   Map<String, dynamic> toJson() => _$GenderToJson(this);
-// }
-
-@JsonSerializable()
 class User {
-  final String id;
-  final String name;
-  final String? password;
-  final String email;
-  final String gender;
-  final String firstName;
-  final String lastName;
-  final String username;
+  int? id;
+  String? email;
+  String? firstName;
+  String? lastName;
+  String? username;
+  Gender? gender;
 
-  User(this.id, this.name, this.password, this.email, this.gender,
-      this.firstName, this.lastName, this.username);
+  User(
+      {this.id,
+      this.email,
+      this.firstName,
+      this.lastName,
+      this.username,
+      this.gender});
 
-  String get initials {
-    final parts = name.split(" ");
-    if (parts.length >= 2) {
-      return "${parts.first[0]}${parts.last[0]}";
-    }
-
-    return parts.single[0];
+  User.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    email = json['email'];
+    firstName = json['firstName'];
+    lastName = json['lastName'];
+    username = json['username'];
+    gender = parseGender(json['gender']);
   }
 
-  factory User.fromJson(json) => _$UserFromJson(json);
-
-  Map<String, dynamic> toJson() => _$UserToJson(this);
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['email'] = email;
+    data['firstName'] = firstName;
+    data['lastName'] = lastName;
+    data['username'] = username;
+    data['gender'] = gender;
+    return data;
+  }
 }
