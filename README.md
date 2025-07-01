@@ -1,16 +1,13 @@
-# home
+# Learning Flutter
 
-A new Flutter project.
+Hated it, Never going to try it again.
 
-## Getting Started
+![Example Register](./images/3.png)
+![Example Login](./images/5.png)
+![Example HomePage](./images/6.png)
+![Example HomePage](./images/2.png)
+![Example Profile](./images/4.png)
+![Example AboutUs](./images/1.png)
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
